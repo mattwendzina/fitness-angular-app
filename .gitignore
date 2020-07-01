@@ -65,3 +65,6 @@ node_modules/
 .env
 .environment.ts
 .environment.prod.ts
+
+#Build folder
+.dist
