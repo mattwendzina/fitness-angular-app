@@ -1,0 +1,31 @@
+<section
+  class="current-training"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+>
+  <h1>Okay, let's get those {{ currentExercise?.name }} going!</h1>
+  <mat-progress-spinner
+    mode="determinate"
+    [value]="spinnerProgress"
+  ></mat-progress-spinner>
+  <h1 *ngIf="time">{{ time }} seconds to go!</h1>
+  <p>
+    {{ motivationalMessages[currentMotivationalMessageId]?.name }}
+  </p>
+  <button
+    *ngIf="timerStarted"
+    mat-raised-button
+    color="accent"
+    (click)="pauseTimer()"
+  >
+    Pause
+  </button>
+  <div *ngIf="!timerStarted">
+    <button mat-raised-button color="accent" (click)="restartTimer()">
+      Go Again!
+    </button>
+    <button mat-raised-button color="warn" (click)="finishCurrentTraining()">
+      Exit
+    </button>
+  </div>
+</section>

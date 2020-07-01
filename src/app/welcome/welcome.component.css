@@ -1,0 +1,9 @@
+section {
+  text-align: center;
+}
+
+@media screen and (min-width: 1200px) {
+  section {
+    padding: 20px;
+  }
+}

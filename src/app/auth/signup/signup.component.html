@@ -1,0 +1,91 @@
+<section class="signup-form">
+    <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+    <form
+        *ngIf="!(isLoading$ | async)"
+        (ngSubmit)="onSubmit(signupForm)"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+        fxLayoutGap="10px"
+        #signupForm="ngForm"
+    >
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+                ngModel
+                name="email"
+                matInput
+                type="email"
+                placeholder="Your email address"
+                required
+                email
+                min-length="6"
+                #emailInput="ngModel"
+            />
+            <mat-error *ngIf="emailInput.hasError('email')"
+                >Please enter a valid email address</mat-error
+            >
+        </mat-form-field>
+        <mat-form-field
+            hintLabel="Your password should be at least 6 characters"
+        >
+            <mat-label>Password</mat-label>
+            <input
+                ngModel
+                name="password"
+                matInput
+                placeholder="Your password"
+                password
+                required
+                #pwInput="ngModel"
+                minlength="6"
+                [type]="hide ? 'password' : 'text'"
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+                hide ? 'visibility_off' : 'visibility'
+            }}</mat-icon>
+            <mat-error>Must be at least 6 characters</mat-error>
+            <mat-hint align="end"> {{ pwInput.value?.length }} / 6</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Your birthdate
+            </mat-label>
+            <input
+                matInput
+                [matDatepicker]="picker"
+                placeholder="Birthdate"
+                [max]="maxDate"
+                ngModel
+                name="birthdate"
+                required
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Must select a valid birthdate</mat-error>
+        </mat-form-field>
+
+        <mat-checkbox ngModel name="agree" required #terms="ngModel"
+            >Agree to Terms and Conditions</mat-checkbox
+        >
+        <mat-error
+            style="font-size: 12px;"
+            *ngIf="
+                (terms.hasError('required') && terms.touched) ||
+                (terms.hasError('required') && signupForm.submitted)
+            "
+            >Must agree to Terms and Conditions</mat-error
+        >
+
+        <div>
+            <button
+                type="submit"
+                mat-raised-button
+                color="primary"
+                [disabled]="signupForm.invalid"
+            >
+                Submit
+            </button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,22 @@
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover,
+a:active {
+  color: #ff4081;
+  transition: 200ms ease-in-out;
+}
+
+li {
+  list-style-type: none;
+}
+
+.menu-button {
+  border: none;
+}
+
+li a {
+  cursor: pointer;
+}

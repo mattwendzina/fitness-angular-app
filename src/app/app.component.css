@@ -1,0 +1,8 @@
+mat-sidenav-container,
+main {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 35%;
+}
