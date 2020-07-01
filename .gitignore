@@ -63,8 +63,8 @@ node_modules/
 
 # dotenv environment variables file
 .env
-.environment.ts
-.environment.prod.ts
+environments/
+
 
 #Build folder
 .dist
